@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<document>
+
+<section name="title">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+</section>
+
+<section name="versions">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+</section>
+
+<section name="summary">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+</section>
+
+<section name="toc">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+</section>
+
+<section name="systeminformation">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+</section>
+
+<section name="hardwareplatform">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+ <subsection name="general">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="bios">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+</section>
+
+<section name="softwareplatform">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+ <subsection name="general">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="windowscomponents">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="patches">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="msiapplications">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="regapplications">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+</section>
+
+<section name="storage">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+</section>
+
+<section name="network">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+ <subsection name="ipconfiguration">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="iproutes">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+</section>
+
+<section name="iis">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+ <subsection name="webserver">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+</section>
+
+
+<section name="miscellaneous">
+ <prenotes></prenotes>
+ <postnotes></postnotes>
+ <subsection name="eventlog">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="localgroups">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="localusers">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="printers">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="regional">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="processes">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="services">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="shares">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="startup_commands">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="virtualmemory">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+ <subsection name="registry">
+  <prenotes></prenotes>
+  <postnotes></postnotes>
+ </subsection>
+</section>
+
+</document>
+

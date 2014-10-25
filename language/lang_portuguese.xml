@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<language name="Portuguese">
+<!--
+	Created by Patrick Ogenstad
+	Traduzido por Luís Barreto
+-->
+<section type="title" name="title" translation="Documentação do Sistema %computer%">
+</section>
+
+<section type="note" name="versões" translation="Versão do Documento">
+ <property type="string" name="strScanTime" translation="Scan Time" />
+</section>
+
+<section type="note" name="summary" translation="Sumário">
+ <property type="string" name="strOperatingSystem" translation="Sistema Operativo" />
+ <property type="string" name="strServicePack" translation="Service Pack" />
+ <property type="string" name="strNetBiosName" translation="NetBIOS" />
+ <property type="string" name="strFQDN" translation="FQDN" />
+ <property type="string" name="strRoles" translation="Funções" />
+ <property type="string" name="strIdentifyingNumber" translation="Nº Série" />
+</section>
+
+<section type="toc" name="toc" translation="Índice">
+</section>
+
+<section type="heading1" name="systeminformation" translation="Informação do Sistema">
+</section>
+
+<section type="heading1" name="hardwareplatform" translation="Plataforma de Hardware">
+  <subsection name="general" translation="Informação Geral">
+   <property type="string" name="strManufacturer" translation="Fabricante" />
+   <property type="string" name="strComputerProductname" translation="Nome do Producto" />
+   <property type="string" name="strIdentifyingNumber" translation="Número de Identificação" />
+   <property type="string" name="strComputerChassis" translation="Chassis" />
+
+   <property type="space"/>
+   <property type="boldtext" translation="Processor" />
+   <property type="string" name="strProcessorName" translation="Processador" />
+   <property type="string" name="strProcessorDescription" translation="Descrição" />
+   <property type="string" name="strProcessorSpeed" translation="Velocidade (MHz)" />
+   <property type="string" name="strProcessorL2Cache" translation="Tamanho da Cache L2 (KB)" />
+   <property type="string" name="strProcessorExternalClock" translation="Relógio Externo (MHz)" />
+   <property type="string" name="strProcessorCount" translation="Número de Processadores" />
+   <property type="string" name="strProcessorHT" translation="Sistema Hyper-Threading" />
+
+   <property type="space"/>
+   <property type="boldtext" translation="Memória" />
+   <property type="string" name="strTotalMemory" translation="Memória Total (MB)" />
+   <property type="table" name="dbrMemory" columns="4" translation="Banco,Capacidade,Forma,Tipo" />
+
+   <property type="space" ctype="record" criteria="dbrCDROM" />
+   <property type="boldtext" ctype="record" criteria="dbrCDROM" translation="CD-ROM" />
+   <property type="table" name="dbrCDROM" ctype="record" criteria="dbrCDROM" columns="3" translation="Nome,Drive,Fabricante" />
+
+   <property type="space" ctype="record" criteria="dbrTapeDrive" />
+   <property type="boldtext" ctype="record" criteria="dbrTapeDrive" translation="Drive Tape" />
+   <property type="table" name="dbrTapeDrive" ctype="record" criteria="dbrTapeDrive" columns="3" translation="Nome,Descrição,Fabricante" />
+
+   <property type="space" ctype="record" criteria="dbrSoundCard" />
+   <property type="boldtext" ctype="record" criteria="dbrSoundCard" translation="PLaca de Som" />
+   <property type="table" name="dbrSoundCard" ctype="record" criteria="dbrSoundCard" columns="2" translation="Nome,Fabricante" />
+
+   <property type="space"/>
+   <property type="boldtext" ctype="record" criteria="dbrVideoController" translation="Video Controller" />
+   <property type="table" name="dbrVideoController" ctype="record" criteria="dbrVideoController" columns="3" translation="Nome,Memória,Compatibilidade" />
+  </subsection>
+  
+  <subsection name="bios" ctype="string" criteria="strBiosVersion" translation="Informação da BIOS">
+   <property type="string" name="strBiosVersion" translation="Versão da Bios" />
+   <property type="string" name="strBiosSMVersion" translation="Versão da SMBios" />
+   <property type="string" name="strBiosCharacteristics" translation="Características da Bios" />
+  </subsection>
+</section>
+
+<section type="heading1" name="softwareplatform" translation="Plataforma de Software">
+  <subsection name="general" translation="Informação Geral">
+   <property type="string" name="strOSName" translation="Sistema Operativo" />
+   <property type="string" name="strComputerRole" translation="Função do Computador" />
+   <property type="string" name="strComputerDomainType" translation="Tipo de Domínio" />
+   <property type="string" name="strDomainName" translation="Nome de Domínio" />
+   <property type="string" name="strInstallLocation" translation="Pasta da Instalação" />
+   <property type="string" name="strOSLanguage" translation="Língua do Sist. Operativo" />
+   <property type="string" name="strInstallDate" translation="Data de Instalação" />
+   <property type="string" name="strLastUser" translation="Último Login" />
+  </subsection>
+  
+  <subsection name="windowscomponents" ctype="record" criteria="dbrWindowsComponents" translation="Componentes do Windows">
+    <property type="2levellist" name="dbrWindowsComponents" ctype="record" criteria="dbrWindowsComponents" />
+  </subsection>
+  
+  <subsection name="patches" ctype="record" criteria="dbrPatches" translation="Actualizaçãoes Instaladas">
+   <property type="table" name="dbrPatches" ctype="record" criteria="dbrPatches" columns="3" translation="ID do Patch,Descrição,Data de Instalação" />
+  </subsection>
+  
+  <subsection name="msiapplications" ctype="record" criteria="dbrMSIApplications" translation="Programas Instalados (Info. do Windows Installer)">
+   <property type="table" name="dbrMSIApplications" ctype="record" criteria="dbrMSIApplications" columns="4" translation="Nome,Fabricante,Versão,Data de Instalação" />
+  </subsection>
+  
+  <subsection name="regapplications" ctype="record" criteria="dbrRegApplications" translation="Programas Instalados (Info. do Registo)">
+   <property type="table" name="dbrRegApplications" ctype="record" criteria="dbrRegApplications" columns="2" translation="Nome,Versão" />
+  </subsection>
+</section>
+
+<section type="heading1" name="storage" translation="Armazenamento">
+ <subsection name="general" translation="Informação Geral">
+  <property type="storage" translation="Interface,Tamanho Total do Disco (Gb),Livre" />
+ </subsection>
+</section>
+
+<section type="heading1" name="network" translation="Confguração de Rede">
+ <subsection name="ipconfiguration" translation="Configuração IP">
+  <property type="ipconfiguration" name="dbrIPConfiguration" translation="Adaptador de rede,Descrição,MAC,Endereço IP,Gateway,Servidor DNS,Domínio DNS,Wins Primário,Wins Secundário,Servidor DHCP" />
+ </subsection> 
+ <subsection name="iproutes" ctype="record" criteria="dbrIPRoutes" translation="Rotas IP">
+  <property type="table" name="dbrIPRoutes" ctype="record" criteria="dbrIPRoutes" columns="3" translation="Destino,Mácara de Sub-Rede,Gateway" />
+ </subsection> 
+</section>
+
+<section type="heading1" name="iis"  ctype="record" criteria="dbrIISWebServer" translation="IIS-Servições de Informação de Internet">
+ <subsection name="webserver" ctype="record" criteria="dbrIISWebServer" translation="Servidor WWW">
+  <property type="webserver"  ctype="record" criteria="dbrIISWebServer" translation="Directório Principal,Nome-Host,IP,Porta" />
+ </subsection> 
+</section>
+
+<section type="heading1" name="miscellaneous" translation="Configurações Várias">
+ <subsection name="eventlog" ctype="record" criteria="dbrEventLogFiles" translation="Ficheiros do Registo de Eventos">
+  <property type="loop" name="dbrEventLogFiles" ctype="record" criteria="dbrEventLogFiles" columns="4" translation="Nome,Ficheiro,Tamanho Máx. (MB),Política de Sobreposição" />
+ </subsection>
+ <subsection name="localgroups" ctype="record" criteria="dbrLocalGroups" translation="Grupos Locais">
+  <property type="2levellist" name="dbrLocalGroups" ctype="record" criteria="dbrLocalGroups" />
+ </subsection>
+ <subsection name="localusers" ctype="record" criteria="dbrLocalUsers" translation="Contas de Utilizador Locais">
+  <property type="list" name="dbrLocalUsers" ctype="record" criteria="dbrLocalUsers" />
+ </subsection>
+ <subsection name="printers" ctype="record" criteria="dbrPrinters" translation="Impressoras">
+  <property type="string" name="strPrintSpooler" translation="Localização do Spooler de Impressão" />
+  <property type="table" name="dbrPrinters" ctype="record" criteria="dbrPrinters" columns="3" translation="Nome,Driver,Porta" />
+ </subsection>
+ <subsection name="regional" ctype="string" criteria="strTimeZone" translation="Definições Regionais">
+  <property type="string" name="strTimeZone" translation="Fuso Horário" />
+ </subsection>
+ <subsection name="processes" ctype="record" criteria="dbrProcesses" translation="Processos em Execução">
+  <property type="table" name="dbrProcesses" ctype="record" criteria="dbrProcesses" columns="2" translation="Nome,Executável" />
+ </subsection>
+ <subsection name="services" ctype="record" criteria="dbrServices" translation="Serviços">
+  <property type="table" name="dbrServices" ctype="record" criteria="dbrServices" columns="4" translation="Nome,Arranque,Iniciados,Nomes de Início" />
+ </subsection>
+ <subsection name="shares" ctype="record" criteria="dbrShares" translation="Partilhas">
+  <property type="table" name="dbrShares" ctype="record" criteria="dbrShares" columns="3" translation="Nome,Caminho,Descrição" />
+ </subsection>
+ <subsection name="startup_commands" ctype="record" criteria="dbrStartupCommands" translation="Comados Executados no Arranque">
+  <property type="table" name="dbrStartupCommands" ctype="record" criteria="dbrStartupCommands" columns="3" translation="Utilizador,Nome,Comando" />
+ </subsection>
+ <subsection name="virtualmemory" ctype="record" criteria="dbrPagefiles" translation="Memória Virtual">
+  <property type="boldtext" ctype="record" criteria="dbrPagefiles" translation="Ficheiros de Paginação" />
+  <property type="loop" name="dbrPagefiles" ctype="record" criteria="dbrPagefiles" columns="3" translation="Drive,Tamanho Inicial (MB),Tamanho Máx. (MB)" />
+ </subsection>
+ <subsection name="registry" ctype="string" criteria="strRegistrySize" translation="Registo do Windows">
+  <property type="string" name="strRegistrySize" translation="Tamanho Actual do Registo (MB)" />
+  <property type="string" name="strMaxRegistrySize" translation="Tamanho Máx. do Registo (MB)" />
+ </subsection>
+</section>
+</language>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<language name="Swedish">
+<!--
+	Created by Patrick Ogenstad
+-->
+<section type="title" name="title" translation="System Dokumentation för %computer%">
+</section>
+
+<section type="note" name="versions" translation="Dokument Versioner">
+ <property type="string" name="strScanTime" translation="Senaste skanning" />
+</section>
+
+<section type="note" name="summary" translation="Översikt">
+ <property type="string" name="strOperatingSystem" translation="Operativ System" />
+ <property type="string" name="strServicePack" translation="Service Pack" />
+ <property type="string" name="strNetBiosName" translation="NetBIOS" />
+ <property type="string" name="strFQDN" translation="FQDN" />
+ <property type="string" name="strRoles" translation="Roller" />
+ <property type="string" name="strIdentifyingNumber" translation="Serienummer" />
+</section>
+
+<section type="toc" name="toc" translation="Innehållsförteckning">
+</section>
+
+<section type="heading1" name="systeminformation" translation="System Information">
+</section>
+
+<section type="heading1" name="hardwareplatform" translation="Hårdvaru Plattform">
+  <subsection name="general" translation="Generell Information">
+   <property type="string" name="strManufacturer" translation="Tillverkare" />
+   <property type="string" name="strComputerProductname" translation="Produkt Namn" />
+   <property type="string" name="strIdentifyingNumber" translation="Serienummer" />
+   <property type="string" name="strComputerChassis" translation="Chassi" />
+
+   <property type="space"/>
+   <property type="boldtext" translation="Processor" />
+   <property type="string" name="strProcessorName" translation="Processor" />
+   <property type="string" name="strProcessorDescription" translation="Beskrivning" />
+   <property type="string" name="strProcessorSpeed" translation="Hastighet (MHz)" />
+   <property type="string" name="strProcessorL2Cache" translation="L2 Cache Storlek (KB)" />
+   <property type="string" name="strProcessorExternalClock" translation="Extern Klocka (MHz)" />
+   <property type="string" name="strProcessorCount" translation="Antal Processorer" />
+   <property type="string" name="strProcessorHT" translation="Hyper-Threading System" />
+
+   <property type="space"/>
+   <property type="boldtext" translation="Minne" />
+   <property type="string" name="strTotalMemory" translation="Totalt RAM Minne (MB)" />
+   <property type="table" name="dbrMemory" columns="4" translation="Bank,Kapacitet,Form,Type" />
+
+   <property type="space" ctype="record" criteria="dbrCDROM" />
+   <property type="boldtext" ctype="record" criteria="dbrCDROM" translation="CD-ROM" />
+   <property type="table" name="dbrCDROM" ctype="record" criteria="dbrCDROM" columns="3" translation="Namn,Enhet,Tillverkare" />
+
+   <property type="space" ctype="record" criteria="dbrTapeDrive" />
+   <property type="boldtext" ctype="record" criteria="dbrTapeDrive" translation="Band Station" />
+   <property type="table" name="dbrTapeDrive" ctype="record" criteria="dbrTapeDrive" columns="3" translation="Namn,Beskrivning,Tillverkare" />
+
+   <property type="space" ctype="record" criteria="dbrSoundCard" />
+   <property type="boldtext" ctype="record" criteria="dbrSoundCard" translation="Ljudkort" />
+   <property type="table" name="dbrSoundCard" ctype="record" criteria="dbrSoundCard" columns="2" translation="Namn,Tillverkare" />
+
+   <property type="space"/>
+   <property type="boldtext" ctype="record" criteria="dbrVideoController" translation="Grafikkort" />
+   <property type="table" name="dbrVideoController" ctype="record" criteria="dbrVideoController" columns="3" translation="Namn,RAM Minne,Kompatiblitet" />
+  </subsection>
+  
+  <subsection name="bios" ctype="string" criteria="strBiosVersion" translation="BIOS Information">
+   <property type="string" name="strBiosVersion" translation="Bios Version" />
+   <property type="string" name="strBiosSMVersion" translation="SMBios Version" />
+   <property type="string" name="strBiosCharacteristics" translation="Bios Egenskaper" />
+  </subsection>
+</section>
+
+<section type="heading1" name="softwareplatform" translation="Mjukvaru Plattform">
+  <subsection name="general" translation="Generell Information">
+   <property type="string" name="strOSName" translation="OS Namn" />
+   <property type="string" name="strComputerRole" translation="Dator Roll" />
+   <property type="string" name="strComputerDomainType" translation="Domän Typ" />
+   <property type="string" name="strDomainName" translation="Domännamn" />
+   <property type="string" name="strInstallLocation" translation="Windows Katalog" />
+   <property type="string" name="strOSLanguage" translation="OS Språk" />
+   <property type="string" name="strInstallDate" translation="Installations Datum" />
+   <property type="string" name="strLastUser" translation="Senast påloggade användare" />
+  </subsection>
+  
+  <subsection name="windowscomponents" ctype="record" criteria="dbrWindowsComponents" translation="Windows Komponenter">
+    <property type="2levellist" name="dbrWindowsComponents" ctype="record" criteria="dbrWindowsComponents" />
+  </subsection>
+  
+  <subsection name="patches" ctype="record" criteria="dbrPatches" translation="Installerade Patchar">
+   <property type="table" name="dbrPatches" ctype="record" criteria="dbrPatches" columns="3" translation="Patch ID,Beskrivning,Installationsdatum" />
+  </subsection>
+  
+  <subsection name="msiapplications" ctype="record" criteria="dbrMSIApplications" translation="Installerade Program (Med Windows Installer)">
+   <property type="table" name="dbrMSIApplications" ctype="record" criteria="dbrMSIApplications" columns="4" translation="Namn,Leverantör,Version,Installationsdatum" />
+  </subsection>
+  
+  <subsection name="regapplications" ctype="record" criteria="dbrRegApplications" translation="Installerade Program (Från Registret)">
+   <property type="table" name="dbrRegApplications" ctype="record" criteria="dbrRegApplications" columns="2" translation="Namn,Version" />
+  </subsection>
+  
+  <subsection name="productkey" ctype="record" criteria="dbrProductKey" translation="Produkt Nycklar">
+   <property type="table" name="dbrProductKey" ctype="record" criteria="dbrProductKey" columns="2" translation="Produkt,Nyckel" />
+  </subsection>
+  
+  
+</section>
+
+<section type="heading1" name="storage" translation="Lagring">
+ <subsection name="general" translation="Generell Information">
+  <property type="storage" translation="Interface,Totalt Hårddisk Utrymme (Gb),Ledigt" />
+ </subsection>
+</section>
+
+<section type="heading1" name="network" translation="Nätverks Konfiguration">
+ <subsection name="ipconfiguration" translation="IP Adressering">
+  <property type="ipconfiguration" name="dbrIPConfiguration" translation="Nätverkskort,Beskrivning,MAC,IP Adress,Gateway,DNS Server,DNS Domän,Primär Wins,Sekundär Wins,DHCP Server" />
+ </subsection> 
+ <subsection name="iproutes" ctype="record" criteria="dbrIPRoutes" translation="IP Routes">
+  <property type="table" name="dbrIPRoutes" ctype="record" criteria="dbrIPRoutes" columns="3" translation="Mål,Subnät Mask,Gateway" />
+ </subsection> 
+</section>
+
+<section type="heading1" name="iis"  ctype="record" criteria="dbrIISWebServer" translation="Internet Information Services">
+ <subsection name="webserver" ctype="record" criteria="dbrIISWebServer" translation="WWW Server">
+  <property type="webserver"  ctype="record" criteria="dbrIISWebServer" translation="Hemkatalog,Värdnamn,IP,Port" />
+ </subsection> 
+</section>
+
+<section type="heading1" name="miscellaneous" translation="Övrig Konfiguration">
+ <subsection name="eventlog" ctype="record" criteria="dbrEventLogFiles" translation="Event Logg Filer">
+  <property type="loop" name="dbrEventLogFiles" ctype="record" criteria="dbrEventLogFiles" columns="4" translation="Namn,File,Max Storlek (MB),Överskrivnings Policy" />
+ </subsection>
+ <subsection name="localgroups" ctype="record" criteria="dbrLocalGroups" translation="Lokala Grupper">
+  <property type="2levellist" name="dbrLocalGroups" ctype="record" criteria="dbrLocalGroups" />
+ </subsection>
+ <subsection name="localusers" ctype="record" criteria="dbrLocalUsers" translation="Lokala Användarkonton">
+  <property type="list" name="dbrLocalUsers" ctype="record" criteria="dbrLocalUsers" />
+ </subsection>
+ <subsection name="printers" ctype="record" criteria="dbrPrinters" translation="Skrivare">
+  <property type="string" name="strPrintSpooler" translation="Print Spooler Katalog" />
+  <property type="table" name="dbrPrinters" ctype="record" criteria="dbrPrinters" columns="3" translation="Namn,Drivrutin,Port" />
+ </subsection>
+ <subsection name="regional" ctype="string" criteria="strTimeZone" translation="Nationella Inställningar">
+  <property type="string" name="strTimeZone" translation="Tidszon" />
+ </subsection>
+ <subsection name="processes" ctype="record" criteria="dbrProcesses" translation="Processer">
+  <property type="table" name="dbrProcesses" ctype="record" criteria="dbrProcesses" columns="2" translation="Namn,Exekverbar fil" />
+ </subsection>
+ <subsection name="services" ctype="record" criteria="dbrServices" translation="Tjänster">
+  <property type="table" name="dbrServices" ctype="record" criteria="dbrServices" columns="4" translation="Namn,Startläge,Startad,Start Namn" />
+ </subsection>
+ <subsection name="shares" ctype="record" criteria="dbrShares" translation="Utdelade Kataloger">
+  <property type="table" name="dbrShares" ctype="record" criteria="dbrShares" columns="3" translation="Namn,Sökväg,Beskrivning" />
+ </subsection>
+ <subsection name="startup_commands" ctype="record" criteria="dbrStartupCommands" translation="Start Kommandon">
+  <property type="table" name="dbrStartupCommands" ctype="record" criteria="dbrStartupCommands" columns="3" translation="Användare,Namn,Program" />
+ </subsection>
+ <subsection name="virtualmemory" ctype="record" criteria="dbrPagefiles" translation="Virtuellt Minne">
+  <property type="boldtext" ctype="record" criteria="dbrPagefiles" translation="Växlingsfiler" />
+  <property type="loop" name="dbrPagefiles" ctype="record" criteria="dbrPagefiles" columns="3" translation="Enhet,Initial Storlek (MB),Maximal Storlek (MB)" />
+ </subsection>
+ <subsection name="registry" ctype="string" criteria="strRegistrySize" translation="Windows Registret">
+  <property type="string" name="strRegistrySize" translation="Nuvarande Storlek (MB)" />
+  <property type="string" name="strMaxRegistrySize" translation="Maximal Storlek (MB)" />
+ </subsection>
+</section>
+</language>
