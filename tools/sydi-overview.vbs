@@ -2,17 +2,17 @@ Option Explicit
 '==========================================================
 ' LANG : VBScript
 ' NAME : sydi-overview.vbs
-' AUTHOR : Patrick Ogenstad (patrick.ogenstad@netsafe.se)
+' AUTHOR : Patrick Ogenstad (@networklore)
 ' VERSION : 0.3
 ' DATE : 2008-12-9
 ' Description : Creates an Excel overview of SYDI-Server XML files
 '
-' UPDATES : http://sydiproject.com/ (Part of SYDI-Server)
+' UPDATES : http://networklore.com/sydi-server/ (Part of SYDI-Server)
 '
 ' Running the script:
 ' cscript.exe sydi-overview.vbs -x[directory to xml files]
 ' For Options: cscript.exe sydi-overview.vbs -h
-' Feedback: Please send feedback to patrick.ogenstad@netsafe.se
+' Feedback: Please send feedback via http://networklore.com/contact/
 '
 ' Notes:
 ' This has has only been tested with Office 2003 and Office 2007

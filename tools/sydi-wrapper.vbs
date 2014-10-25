@@ -2,7 +2,7 @@ Option Explicit
 '==========================================================
 ' LANG : VBScript
 ' NAME : sydi-wrapper.vbs
-' AUTHOR : Patrick Ogenstad (patrick.ogenstad@netsafe.se)
+' AUTHOR : Patrick Ogenstad
 ' VERSION : 0.2.3
 ' DATE : 2008-12-05
 ' Description : Used as a wrapper for SYDI-Server
@@ -11,10 +11,10 @@ Option Explicit
 ' Edit the settings below and run with command line options
 '
 ' For Options: cscript.exe sydi-wrapper.vbs -h
-' Feedback: Please send feedback to patrick.ogenstad@netsafe.se
+' Feedback: Please send feedback via http://networklore.com/contact/
 '
 ' LICENSE :
-' Copyright (c) 2004-2006, Patrick Ogenstad
+' Copyright (c) 2004-2014, Patrick Ogenstad
 ' All rights reserved.
 '
 ' Redistribution and use in source and binary forms, with or without

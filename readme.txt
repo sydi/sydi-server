@@ -49,12 +49,9 @@ which is used to document Microsoft Exchange organizations.
 
 SYDI is written in VBScript.
 
-SYDI's home page can be found here:
-http://sydiproject.com
+SYDI-Servers's home page can be found here:
+http://networklore.com/sydi-server/
 
-
-My blog where I among other things write about SYDI:
-http://networklore.com
 
 1.1. Author
 -----------

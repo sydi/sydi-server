@@ -2,17 +2,17 @@ Option Explicit
 '==========================================================
 ' LANG : VBScript
 ' NAME : sydi-transform.vbs
-' AUTHOR : Patrick Ogenstad (patrick.ogenstad@netsafe.se)
+' AUTHOR : Patrick Ogenstad
 ' VERSION : 1.0.1
 ' DATE : 2004-11-17
 ' Description : Transforms a SYDI-Server XML file into html output
 '
-' UPDATES : http://sydiproject.com/ (Part of SYDI-Server)
+' UPDATES : http://networklore.com/sydi-server/
 '
 ' Running the script:
 ' cscript.exe sydi-transform.vbs -xServer.XML -sServerHtml.xsl -oServer.html
 ' For Options: cscript.exe sydi-transform.vbs -h
-' Feedback: Please send feedback to patrick.ogenstad@netsafe.se
+' Feedback: Please send feedback via http://networklore.com/contact/
 '
 ' LICENSE :
 ' Copyright (c) 2004-2007, Patrick Ogenstad

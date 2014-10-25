@@ -1,4 +1,4 @@
-Copyright (c) 2004-2009, Patrick Ogenstad (http://sydiproject.com)
+Copyright (c) 2004-2014, Patrick Ogenstad (http://networklore.com/sydi-server/)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

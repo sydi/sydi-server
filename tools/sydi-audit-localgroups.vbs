@@ -7,12 +7,12 @@ Option Explicit
 ' DATE : 2008-01-29
 ' Description : Creates an Excel overview of SYDI-Server XML files
 '
-' UPDATES : http://sydiproject.com/ (Part of SYDI-Server)
+' UPDATES : http://networklore.com/sydi-server/
 '
 ' Running the script:
 ' cscript.exe sydi-audit-localgroups.vbs -x[directory to xml files]
 ' For Options: cscript.exe sydi-audit-localgroups.vbs -h
-' Feedback: Please send feedback to patrick.ogenstad@netsafe.se
+' Feedback: Please send feedback via http://networklore.com/contact/
 '
 ' Notes:
 ' This has has only been tested with Office 2003 and Office 2007
