@@ -2,20 +2,20 @@ Option Explicit
 '==========================================================
 ' LANG : VBScript
 ' NAME : ss-xml2word.vbs (SYDI-Server XML to Word)
-' AUTHOR : Patrick Ogenstad (patrick.ogenstad@netsafe.se)
-' VERSION : 0.2
-' DATE : 2008-01-29
+' AUTHOR : Patrick Ogenstad (@networklore)
+' VERSION : 0.3
+' DATE : 2014-10-25
 ' Description : Converts a SYDI-Server XML to a Microsoft Word Document
 '
 ' UPDATES : http://sydiproject.com/ (Part of SYDI-Server)
 '
 ' For Options: cscript.exe ss-xml2word.vbs -h
-' Feedback: Please send feedback to patrick.ogenstad@netsafe.se
+' Feedback: Please send feedback via http://networklore.com/contact/
 '
 ' Notes:
 ' This has has only been tested with Office 2003 and Office 2007
 ' LICENSE :
-' Copyright (c) 2004-2008, Patrick Ogenstad
+' Copyright (c) 2004-2014, Patrick Ogenstad
 ' All rights reserved.
 '
 ' Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ Option Explicit
 
 ' Script version
 Dim strScriptVersion
-strScriptVersion = "0.2"
+strScriptVersion = "0.3"
 
 ' Variables for Script Arguments
 Dim strSYDIServerSource, strWrittenServerSource
@@ -987,7 +987,7 @@ Sub Init()
 	objDbrRecordsets.Fields.Append "Name", adVarChar, MaxCharacters
 	objDbrRecordsets.Fields.Append "Column1", adVarChar, MaxCharacters
 	objDbrRecordsets.Fields.Append "Column2", adVarChar, MaxCharacters
-	objDbrRecordsets.Fields.Append "Column3", adVarChar, MaxCharacters
+	objDbrRecordsets.Fields.Append "Column3", adVarChar, LargeMaxCharacters
 	objDbrRecordsets.Fields.Append "Column4", adVarChar, MaxCharacters
 	objDbrRecordsets.Fields.Append "Column5", adVarChar, MaxCharacters
 	objDbrRecordsets.Fields.Append "Column6", adVarChar, MaxCharacters
