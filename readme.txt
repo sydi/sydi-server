@@ -1,6 +1,6 @@
 *********************************************************************
-                     SYDI-Server 2.3 Readme File                    
-                             2009-01-24
+                     SYDI-Server 2.4rc Readme File                    
+                             2014-10-25
 *********************************************************************
 
 ---------------------------------------------------------------------
@@ -53,17 +53,15 @@ SYDI's home page can be found here:
 http://sydiproject.com
 
 
-My blog where I among other things write about SYDI, I also
-write short fiction stories related to IT Security. Please
-check it out at:
-http://ogenstad.net
+My blog where I among other things write about SYDI:
+http://networklore.com
 
 1.1. Author
 -----------
 
-Patrick Ogenstad (patrick.ogenstad@netsafe.se) has created SYDI. I
-works as a Network Consultant at a company in Sweden
-called Netsafe (http://www.netsafe.se).
+Patrick Ogenstad has created SYDI. I
+am a consultant and work as a Network Engineer
+at Netsafe (http://www.netsafe.se).
 
 1.2. License
 ------------
@@ -260,28 +258,14 @@ which options you want to use from SYDI-Server.
    isn't installed by default. You can add this with Add/Remove Windows components
    Management and Monitoring Tools / WMI Windows Installer Provider.
 
-7. I want more!
----------------
-
-Ok, this looks good but I want more! If you have any feature requests
-which you want implemented in a future version of SYDI-Server (or any
-other SYDI product), you should visit:
-http://sourceforge.net/tracker/?group_id=116471&atid=674897
-
-You can add feature requests anonymously but if you register an account
-at Sourceforge you will receive an email when the feature request is updated. It is also easier for me to have someone to contact if I don't understand the
-request. If I don't know what you want and I'm unable to contact you I will just delete the request.
-
-
 8. Feedback
 -----------
 
 In my opinion one of the best things about writing open source stuff
 is getting feedback. So please if you have any comments good or bad
 please let me know. I am interested in hearing what you think of the
-software and how you are using it. So please take your time to send an
-email to patrick.ogenstad@netsafe.se. You can also post a comment in the
-forum found at http://sourceforge.net/projects/sydi/.
+software and how you are using it. So please take your time to send
+me a note at http://networklore.com/contact/
 
 9. Updates
 ----------

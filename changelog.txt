@@ -1,3 +1,6 @@
+Version 2.4rc
+    - Fixed bug for drive names in while generating XML files
+
 Version 2.3 - 2009-01-21
 	- Added Product Keys (-rk) for Windows and Office to SYDI Server (based on script by Parabellum)
 	- Added Product Key tab in SYDI Overview

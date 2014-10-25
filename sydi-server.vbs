@@ -2,9 +2,9 @@ Option Explicit
 '==========================================================
 ' LANG : VBScript
 ' NAME : sydi-server.vbs
-' AUTHOR : Patrick Ogenstad (patrick.ogenstad@netsafe.se)
-' VERSION : 2.3
-' DATE : 2009-01-24
+' AUTHOR : Patrick Ogenstad (@networklore)
+' VERSION : 2.4rc
+' DATE : 2014-10-25
 ' Description : Creates a basic documentation for a Windows
 ' system, which you can use as a starting point.
 '
@@ -20,10 +20,10 @@ Option Explicit
 ' the script from. I would recommend running the script with cscript
 ' instead of wscript.
 ' For Options: cscript.exe sydi-server.vbs -h
-' Feedback: Please send feedback to patrick.ogenstad@netsafe.se
+' Feedback: Please send feedback via http://networklore.com/contact/
 '
 ' LICENSE :
-' Copyright (c) 2004-2009 Patrick Ogenstad
+' Copyright (c) 2004-2014 Patrick Ogenstad
 ' All rights reserved.
 '
 ' Redistribution and use in source and binary forms, with or without
@@ -2741,7 +2741,7 @@ Sub PopulateXMLFile()
 		objDbrDrives.Movefirst
 	End If
 	Do Until objDbrDrives.Eof
-		objXMLFile.WriteLine "  <drives name=""" & objDbrDrives.Fields.Item("Caption") & _
+		objXMLFile.WriteLine "  <drives name=""" & Scrub4XML(objDbrDrives.Fields.Item("Caption")) & _
 			""" deviceid=""" & objDbrDrives.Fields.Item("DeviceID") & _
 			""" interface=""" & objDbrDrives.Fields.Item("InterfaceType") & _
 			""" totaldisksize=""" & Round(ReturnBytes2Gigabytes(objDbrDrives.Fields.Item("Size")), 2) & """>"
