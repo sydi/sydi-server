@@ -1,7 +1,7 @@
 Version 2.4rc
 	- Fixed bug for drive names in while generating XML files
 	- Fixed character bug in SYDI-Server which impacted SYDI-Overview
-	- Fixed a bug n ss-xml2word.vbs which hit when a server had many ip addresses
+	- Fixed a bug in ss-xml2word.vbs which hit when a server had many ip addresses
 
 Version 2.3 - 2009-01-21
 	- Added Product Keys (-rk) for Windows and Office to SYDI Server (based on script by Parabellum)
