@@ -4261,6 +4261,8 @@ Function Scrub4XML(strInput)
 		strInput = Replace(strInput,"'","&apos;")
 		strInput = Replace(strInput,"™","") ' Breaks SYDI-Overview
 		strInput = Replace(strInput,"©","") ' Breaks SYDI-Overview
+		strInput = Replace(strInput,chr(147),"") ' Breaks SYDI-Overview
+		strInput = Replace(strInput,chr(148),"") ' Breaks SYDI-Overview
 		strInput = Replace(strInput,"–","-") '  Can break XML files with SYDI-Transform
 		
 	End If
