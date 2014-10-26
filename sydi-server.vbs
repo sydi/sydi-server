@@ -3,8 +3,8 @@ Option Explicit
 ' LANG : VBScript
 ' NAME : sydi-server.vbs
 ' AUTHOR : Patrick Ogenstad (@networklore)
-' VERSION : 2.4rc
-' DATE : 2014-10-25
+' VERSION : 2.4
+' DATE : 2014-10-26
 ' Description : Creates a basic documentation for a Windows
 ' system, which you can use as a starting point.
 '
@@ -60,7 +60,7 @@ strDocumentAuthor = ""
 
 ' Script version
 Dim strScriptVersion
-strScriptVersion = "2.3"
+strScriptVersion = "2.4"
 
 ' Fonts to use in document
 Dim strFontBodyText, strFontHeading1, strFontHeading2, strFontHeading3, strFontHeading4, strFontTitle, strFontTOC1, strFontTOC2, strFontTOC3
@@ -312,21 +312,10 @@ End If
 '==========================================================
 ' Procedures
 
-Sub CheckVersion
-	Dim strURLSydiVersioncheck
-	Dim objHTTP
-	strURLSydiVersioncheck="http://sydi.sourceforge.net/versions.php?package=sydi-server"
-	Set objHTTP = CreateObject("MSXML2.XMLHTTP")
-	Call objHTTP.Open("GET", strURLSydiVersioncheck, FALSE)
-	objHTTP.Send
-	If (strScriptVersion = objHTTP.ResponseText) Then
-		WScript.echo "You have the latest version (v." & strScriptVersion & ")"
-	Else
-		wscript.echo "A new version of SYDI-Server has been released!"
-		wscript.echo "Your version: v." & strScriptVersion
-		wscript.echo "Latest version: v." & objHTTP.ResponseText
-		wscript.echo "Download it from http://sydiproject.com/"
-	End If
+Sub CheckVersion()
+	wscript.echo "Your version: v." & strScriptVersion
+	wscript.echo ""
+	wscript.echo "Check online for the latest release http://networklore.com/sydi-server/"
 	Wscript.Quit
 End Sub ' CheckVersion
 
