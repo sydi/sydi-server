@@ -1,0 +1,8 @@
+*.vbs         eol=crlf
+*.txt         eol=crlf
+*.html        eol=crlf
+*.xml         eol=crlf
+*.xsl         eol=crlf
+
+
+
