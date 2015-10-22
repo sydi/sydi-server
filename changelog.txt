@@ -1,3 +1,6 @@
+Version 2.5
+	- Added Greek language file for ss-xml2word.vbs (by Manos Petridis)
+
 Version 2.4
 	- Fixed bug for drive names in while generating XML files
 	- Fixed character bug in SYDI-Server which impacted SYDI-Overview
@@ -27,7 +30,7 @@ Version 2.1 - 2008-01-29
 	- Added language files for ss-xml2word.vbs: Dutch, Italian, Norwegian, Portuguese
 	- Added service comparison for computers (SYDI-Overview)
 	- Added IP Addresses to SYDI-Overview, it will only report one address in this version. (Stay tuned)
-	
+
 Version 2.0 - 2006-06-26
 	- Added ss-xml2word.vbs
 	- Added basic reporting for Internet Information Services (IIS)
