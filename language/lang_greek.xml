@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ISO-8859-7" ?>
+<language name="Greek">
+<!--
+	Created by Patrick Ogenstad
+	Translated to Greek by Manos PETRIDIS <manospe@eemed.gr>	
+-->
+<section type="title" name="title" translation="Τεκμηρίωση Συστήματος Η/Υ %computer%">
+</section>
+
+<section type="note" name="versions" translation="Έκδοση">
+ <property type="string" name="strScanTime" translation="της" />
+</section>
+
+<section type="note" name="summary" translation="Σύνοψη">
+ <property type="string" name="strOperatingSystem" translation="Λειτουργικό Σύστημα" />
+ <property type="string" name="strServicePack" translation="Service Pack" />
+ <property type="string" name="strNetBiosName" translation="Όνομα NetBIOS" />
+ <property type="string" name="strFQDN" translation="Πλήρως Ορισμένο Όνομα Τομέα [FQDN]" />
+ <property type="string" name="strRoles" translation="Ρόλοι" />
+ <property type="string" name="strIdentifyingNumber" translation="Κωδικός ταυτοποίησης" />
+</section>
+
+<section type="toc" name="toc" translation="Περιεχόμενα">
+</section>
+
+<section type="heading1" name="systeminformation" translation="Πληροφορίες Συστήματος">
+</section>
+
+<section type="heading1" name="hardwareplatform" translation="Υλικό [Hardware]">
+  <subsection name="general" translation="Γενικές Πληροφορίες">
+   <property type="string" name="strManufacturer" translation="Κατασκευαστής" />
+   <property type="string" name="strComputerProductname" translation="Όνομα προϊόντος" />
+   <property type="string" name="strIdentifyingNumber" translation="Κωδικός ταυτοποίησης" />
+   <property type="string" name="strComputerChassis" translation="Μορφή μονάδας" />
+
+   <property type="space"/>
+   <property type="boldtext" translation="Επεξεργαστές" />
+   <property type="string" name="strProcessorName" translation="Επεξεργαστής" />
+   <property type="string" name="strProcessorDescription" translation="Περιγραφή" />
+   <property type="string" name="strProcessorSpeed" translation="Συχνότητα λειτουργίας (MHz)" />
+   <property type="string" name="strProcessorL2Cache" translation="Μέγεθος προσωρινής μνήμης 2ου επιπέδου [L2 Cache] (KB)" />
+   <property type="string" name="strProcessorExternalClock" translation="Συχνότητα επικοινωνίας [External Clock] (MHz)" />
+   <property type="string" name="strProcessorCount" translation="Πλήθος επεξεργαστών" />
+   <property type="string" name="strProcessorHT" translation="Υποστηρίζεται Hyper-Threading" />
+
+   <property type="space"/>
+   <property type="boldtext" translation="Μνήμη" />
+   <property type="string" name="strTotalMemory" translation="Συνολικό μέγεθος μνήμης (MB)" />
+   <property type="table" name="dbrMemory" columns="4" translation="Θέση,Χωρητικότητα,Μορφή,Τύπος" />
+
+   <property type="space" ctype="record" criteria="dbrCDROM" />
+   <property type="boldtext" ctype="record" criteria="dbrCDROM" translation="CD-ROM" />
+   <property type="table" name="dbrCDROM" ctype="record" criteria="dbrCDROM" columns="3" translation="Όνομα,Όνομα Δίσκου,Κατασκευαστής" />
+
+   <property type="space" ctype="record" criteria="dbrTapeDrive" />
+   <property type="boldtext" ctype="record" criteria="dbrTapeDrive" translation="Μονάδες Ταινίας" />
+   <property type="table" name="dbrTapeDrive" ctype="record" criteria="dbrTapeDrive" columns="3" translation="Όνομα,Περιγραφή,Κατασκευαστής" />
+
+   <property type="space" ctype="record" criteria="dbrSoundCard" />
+   <property type="boldtext" ctype="record" criteria="dbrSoundCard" translation="Κάρτες Ήχου" />
+   <property type="table" name="dbrSoundCard" ctype="record" criteria="dbrSoundCard" columns="2" translation="Όνομα,Κατασκευαστής" />
+
+   <property type="space"/>
+   <property type="boldtext" ctype="record" criteria="dbrVideoController" translation="Ελεγκτές Οθόνης" />
+   <property type="table" name="dbrVideoController" ctype="record" criteria="dbrVideoController" columns="3" translation="Όνομα,Μέγεθος μνήμης,Συμβατότητα" />
+  </subsection>
+  
+  <subsection name="bios" ctype="string" criteria="strBiosVersion" translation="Πληροφορίες BIOS">
+   <property type="string" name="strBiosVersion" translation="Έκδοση BIOS" />
+   <property type="string" name="strBiosSMVersion" translation="Έκδοση SMBIOS" />
+   <property type="string" name="strBiosCharacteristics" translation="Χαρακτηριστικά BIOS" />
+  </subsection>
+</section>
+
+<section type="heading1" name="softwareplatform" translation="Λογισμικό [Software]">
+  <subsection name="general" translation="Γενικές Πληροφορίες">
+   <property type="string" name="strOSName" translation="Όνομα Λειτουργικού Συστήματος" />
+   <property type="string" name="strComputerRole" translation="Ρόλοι του Η/Υ" />
+   <property type="string" name="strComputerDomainType" translation="Τύπος Τομέα [Domain]" />
+   <property type="string" name="strDomainName" translation="Όνομα Τομέα [Domain]" />
+   <property type="string" name="strInstallLocation" translation="Θέση εγκατάστασης" />
+   <property type="string" name="strOSLanguage" translation="Γλώσσα Λειτουργικού Συστήματος" />
+   <property type="string" name="strInstallDate" translation="Ημερομηνία εγκατάστασης" />
+   <property type="string" name="strLastUser" translation="Όνομα πλέον πρόσφατου Χρήστη" />
+  </subsection>
+  
+  <subsection name="windowscomponents" ctype="record" criteria="dbrWindowsComponents" translation="Αρθρώματα των Windows [Components]">
+    <property type="2levellist" name="dbrWindowsComponents" ctype="record" criteria="dbrWindowsComponents" />
+  </subsection>
+  
+  <subsection name="patches" ctype="record" criteria="dbrPatches" translation="Εγκατεστημένες Διορθώσεις [Patches]">
+   <property type="table" name="dbrPatches" ctype="record" criteria="dbrPatches" columns="3" translation="ID διόρθωσης,Περιγραφή,Ημ/νία εγκατάστασης" />
+  </subsection>
+  
+  <subsection name="msiapplications" ctype="record" criteria="dbrMSIApplications" translation="Εγκατεστημένα Προγράμματα (βάσει πληροφοριών Windows Installer)">
+   <property type="table" name="dbrMSIApplications" ctype="record" criteria="dbrMSIApplications" columns="4" translation="Όνομα,Κατασκευαστής,Έκδοση,Ημ/νία εγκατάστασης" />
+  </subsection>
+  
+  <subsection name="regapplications" ctype="record" criteria="dbrRegApplications" translation="Εγκατεστημένα Προγράμματα (βάσει πληροφοριών Μητρώου)">
+   <property type="table" name="dbrRegApplications" ctype="record" criteria="dbrRegApplications" columns="2" translation="Όνομα,Έκδοση" />
+  </subsection>
+
+  <subsection name="productkey" ctype="record" criteria="dbrProductKey" translation="Μοναδικά Χαρακτηριστικά Εγκατάστασης [Product Keys]">
+   <property type="table" name="dbrProductKey" ctype="record" criteria="dbrProductKey" columns="2" translation="Προϊόν,Κλειδί" />
+  </subsection>
+  
+  
+ </section>
+
+<section type="heading1" name="storage" translation="Αποθηκευτικά Μέσα">
+ <subsection name="general" translation="Γενικές Πληροφορίες">
+  <property type="storage" translation="Τύπος σύνδεσης,Συνολικό μέγεθος (Gb),Ελεύθερο" />
+ </subsection>
+</section>
+
+<section type="heading1" name="network" translation="Ρυθμίσεις Δικτύου">
+ <subsection name="ipconfiguration" translation="Ρύθμιση IP">
+  <property type="ipconfiguration" name="dbrIPConfiguration" translation="Κάρτα δικτύου,Περιγραφή,MAC,Διεύθυνση IP,Έξοδος μέσω,Server DNS,Τομέας DNS,Κύριος Wins,Δευτερεύων Wins,Server DHCP" />
+ </subsection> 
+ <subsection name="iproutes" ctype="record" criteria="dbrIPRoutes" translation="Δρομολογήσεις IP">
+  <property type="table" name="dbrIPRoutes" ctype="record" criteria="dbrIPRoutes" columns="3" translation="Προρισμός,Μάσκα Subnet,Έξοδος" />
+ </subsection> 
+</section>
+
+<section type="heading1" name="iis"  ctype="record" criteria="dbrIISWebServer" translation="Internet Information Services">
+ <subsection name="webserver" ctype="record" criteria="dbrIISWebServer" translation="WWW Server">
+  <property type="webserver"  ctype="record" criteria="dbrIISWebServer" translation="Φάκελος βάσης,Όνομα Host,Δ/νση IP,Θύρα" />
+ </subsection> 
+</section>
+
+<section type="heading1" name="miscellaneous" translation="Διάφορες Ρυθμίσεις">
+ <subsection name="eventlog" ctype="record" criteria="dbrEventLogFiles" translation="Αρχεία Συμβάντων">
+  <property type="loop" name="dbrEventLogFiles" ctype="record" criteria="dbrEventLogFiles" columns="4" translation="Όνομα,Αρχείο,Ανω όριο μεγέθους (MB),Πολιτική Επανεγγραφής" />
+ </subsection>
+ <subsection name="localgroups" ctype="record" criteria="dbrLocalGroups" translation="Τοπικές Ομάδες Χρηστών">
+  <property type="2levellist" name="dbrLocalGroups" ctype="record" criteria="dbrLocalGroups" />
+ </subsection>
+ <subsection name="localusers" ctype="record" criteria="dbrLocalUsers" translation="Τοπικοί Λογαριασμοί Χρηστών">
+  <property type="list" name="dbrLocalUsers" ctype="record" criteria="dbrLocalUsers" />
+ </subsection>
+ <subsection name="printers" ctype="record" criteria="dbrPrinters" translation="Εκτυπωτές">
+  <property type="string" name="strPrintSpooler" translation="Θέση προσωρινών αρχείων εκτύπωσης" />
+  <property type="table" name="dbrPrinters" ctype="record" criteria="dbrPrinters" columns="3" translation="Όνομα,Οδηγός,Θύρα" />
+ </subsection>
+ <subsection name="regional" ctype="string" criteria="strTimeZone" translation="Τοπικές Ρυθμίσεις">
+  <property type="string" name="strTimeZone" translation="Ζώνη Ώρας" />
+ </subsection>
+ <subsection name="processes" ctype="record" criteria="dbrProcesses" translation="Τρέχουσες Διαδικασίες">
+  <property type="table" name="dbrProcesses" ctype="record" criteria="dbrProcesses" columns="2" translation="Όνομα,Εκτελέσιμο Αρχείο" />
+ </subsection>
+ <subsection name="services" ctype="record" criteria="dbrServices" translation="Υπηρεσίες [Services]">
+  <property type="table" name="dbrServices" ctype="record" criteria="dbrServices" columns="4" translation="Όνομα,Τρόπος Εκκίνησης,Σε λειτουργία,Κωδικός Χρήστη" />
+ </subsection>
+ <subsection name="shares" ctype="record" criteria="dbrShares" translation="Κοινόχρηστοι Πόροι">
+  <property type="table" name="dbrShares" ctype="record" criteria="dbrShares" columns="3" translation="Όνομα,Διαδρομή,Περιγραφή" />
+ </subsection>
+ <subsection name="startup_commands" ctype="record" criteria="dbrStartupCommands" translation="Εντολές κατά την Έναρξη">
+  <property type="table" name="dbrStartupCommands" ctype="record" criteria="dbrStartupCommands" columns="3" translation="Χρήστης,Όνομα,Εντολή" />
+ </subsection>
+ <subsection name="virtualmemory" ctype="record" criteria="dbrPagefiles" translation="Εικονική Μνήμη">
+  <property type="boldtext" ctype="record" criteria="dbrPagefiles" translation="Αρχεία Σελιδοποίησης" />
+  <property type="loop" name="dbrPagefiles" ctype="record" criteria="dbrPagefiles" columns="3" translation="Δίσκος,Αρχικό Μέγεθος (MB),Μέγιστο Μέγεθος (MB)" />
+ </subsection>
+ <subsection name="registry" ctype="string" criteria="strRegistrySize" translation="Μητρώο των Windows">
+  <property type="string" name="strRegistrySize" translation="Τρέχον μέγεθος Μητρώου (MB)" />
+  <property type="string" name="strMaxRegistrySize" translation="Ανω όριο μεγέθους Μητρώου (MB)" />
+ </subsection>
+</section>
+</language>
