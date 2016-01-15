@@ -51,6 +51,20 @@ Option Explicit
 ' POSSIBILITY OF SUCH DAMAGE.
 '==========================================================
 '==========================================================
+' Force to run in cscript, if run from wscript, rerun from cscript with args
+Sub forceCScriptExecution
+	Dim Arg, Str
+	If Not LCase( Right( WScript.FullName, 12 ) ) = "\cscript.exe" Then
+		For Each Arg In WScript.Arguments
+			If InStr( Arg, " " ) Then Arg = """" & Arg & """"
+			Str = Str & " " & Arg
+		Next
+		CreateObject( "WScript.Shell" ).Run "cscript //nologo """ & WScript.ScriptFullName & """ " & Str
+		WScript.Quit
+	End If
+End Sub
+forceCScriptExecution
+
 ' Settings
 Dim strDocumentAuthor, strComputer
 
