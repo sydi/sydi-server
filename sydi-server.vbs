@@ -117,6 +117,9 @@ Dim strTotalPhysicalMemoryMB, strDomainType, strComputerRole
 ' Variables for the Win32_ComputerSystemProduct class
 Dim strComputerSystemProduct_Manufacturer, strComputerSystemProduct_Name, strComputerSystemProduct_IdentifyingNumber
 
+'Variable for the Win32_ServerFeature class
+Dim objDbrServerFeatures
+
 ' Variables For the Win32_DiskDrive, Win32_DiskPartition and Win32_LogicalDisk classes
 Dim objDbrDrives, objDbrDisks, objDiskPartitions, objDiskPartition, objLogicalDisks, objLogicalDisk
 
@@ -708,7 +711,7 @@ Function GatherWMIInformation()
 
 
 	ReportProgress " Gathering OS information"
-	Set colItems = objWMIService.ExecQuery("Select Name, CSDVersion, InstallDate, OSLanguage, Version, WindowsDirectory from Win32_OperatingSystem",,48)
+	Set colItems = objWMIService.ExecQuery("Select Name, BuildNumber, CSDVersion, InstallDate, OSLanguage, Version, WindowsDirectory from Win32_OperatingSystem",,48)
 	For Each objItem in colItems
 		strOperatingSystem_InstallDate = objItem.InstallDate
 		strOperatingSystem_Build = objItem.BuildNumber
