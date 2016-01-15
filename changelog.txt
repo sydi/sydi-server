@@ -1,7 +1,8 @@
 Version 2.5
 	- Added Greek language file for ss-xml2word.vbs (by Manos Petridis)
 	- Force use of cscript, if wscript is calling shell, rerun via cscript
-
+	- Added GetKBNumber(), GetRegHFID(), and GetRegUpdateType() functions
+	  for use by GatherRegInformation() update processing.
 Version 2.4
 	- Fixed bug for drive names in while generating XML files
 	- Fixed character bug in SYDI-Server which impacted SYDI-Overview

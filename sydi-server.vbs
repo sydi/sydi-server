@@ -485,6 +485,31 @@ Function GatherIISInformation()
 	ReportProgress "End subroutine: GatherIISInformation(" & strComputer & ")"
 End Function ' GatherIISInformation()
 
+Function GetKBNumber(strKBID)
+	Dim arrSplitKB
+	arrSplitKB = Split(strKBID, "B")
+	GetKBNumber = arrSplitKB(1)
+End Function
+
+Function GetRegHFID(strRegProgramsDisplayName)
+	Dim arrSplitDN1, arrSplitDN2
+	arrSplitDN1 = Split(strRegProgramsDisplayName, "(")
+	arrSplitDN2 = Split(arrSplitDN1(1), ")")
+	GetRegHFID = arrSplitDN2(0)
+End Function
+
+Function GetRegUpdateType(strRegProgramsDisplayName)
+	Dim arrSplitName
+	arrSplitName = split(strRegProgramsDisplayName)
+	If ( arrSplitName(0) = "Security" ) Then
+		GetRegUpdateType = "Security Update"
+	Elseif ( arrSplitName(0) = "Service" ) Then
+		GetRegUpdateType = "Service Pack"
+	Else
+		GetRegUpdateType = "Update"
+	End If
+End Function
+
 Function GatherRegInformation()
 	Dim arrRegValueNames, arrRegValueTypes
 	Dim dwValue
