@@ -145,8 +145,9 @@ Dim strDNSServers
 Dim objDbrEventLogFile
 
 ' Variables for the Win32_OperatingSystems Class
-Dim strOperatingSystem_InstallDate, strOperatingSystem_Caption, strOperatingSystem_ServicePack, strOperatingSystem_WindowsDirectory
-Dim strOperatingSystem_LanguageCode, arrOperatingSystem_Name
+Dim strOperatingSystem_InstallDate, strOperatingSystem_Build, strOperatingSystem_Caption, strOperatingSystem_ServicePack, strOperatingSystem_WindowsDirectory, strOperatingSystem_LanguageCode
+Dim arrOperatingSystem_Name
+Dim bIsServer
 
 ' Variables for the Win32_PageFile Class
 Dim objDbrPagefile
@@ -218,7 +219,9 @@ Dim bRoleRIS, bRoleSMTP, bRoleSQL, bRoleTS, bRoleWINS, bRoleWWW
 Dim objDbrSystemRoles, nTerminalServerMode
 
 ' Variables to handle different versions of Windows
-Dim nOperatingSystemLevel
+Dim strOperatingSystemLevel
+Dim strOperatingSystemLevelFull
+Dim strOperatingSystemLevelDisp
 
 ' Variables for other WMI Providers
 Dim bHasMicrosoftIISv2
@@ -238,7 +241,7 @@ errGatherRegInformation = False
 
 ' Variables for script options
 ' WMI
-Dim bWMIBios, bWMIRegistry, bWMIApplications,bWMIPatches,bWMIFileShares, bWMIServices, bWMIPrinters
+Dim bWMIBios, bWMIServerFeatures, bWMIRegistry, bWMIApplications,bWMIPatches,bWMIFileShares, bWMIServices, bWMIPrinters
 Dim bWMIEventLogFile, bWMILocalAccounts, bWMILocalGroups, bWMIIP4Routes, bWMIRunningProcesses
 Dim bWMIHardware, bWMIStartupCommands
 ' Registry
@@ -360,9 +363,10 @@ Sub DisplayHelp
 	WScript.Echo "Examples: cscript.exe sydi-server.vbs -wabes -rc -f10 -tSERVER1"
 	WScript.Echo "          cscript.exe sydi-server-vbs -ex -sh -o""H:\Server docs\DC1.xml -tDC1"""
 	WScript.Echo "Gathering Options"
-	WScript.Echo " -w	- WMI Options (Default: -wabefghipPqrsSu)"
+	WScript.Echo " -w	- WMI Options (Default: -wabcefghipPqrsSu)"
  	WScript.Echo "   a	- Windows Installer Applications"
 	WScript.Echo "   b	- BIOS Information"
+	WScript.Echo "   c	- Server Features (ignored for non server OSes)"
  	WScript.Echo "   e	- Event Log files"
  	WScript.Echo "   f	- File Shares"
  	WScript.Echo "   g	- Local Groups (on non DC machines)"
@@ -707,16 +711,50 @@ Function GatherWMIInformation()
 	Set colItems = objWMIService.ExecQuery("Select Name, CSDVersion, InstallDate, OSLanguage, Version, WindowsDirectory from Win32_OperatingSystem",,48)
 	For Each objItem in colItems
 		strOperatingSystem_InstallDate = objItem.InstallDate
+		strOperatingSystem_Build = objItem.BuildNumber
 		arrOperatingSystem_Name = Split(objItem.Name,"|")
 		strOperatingSystem_Caption = arrOperatingSystem_Name(0)
 		strOperatingSystem_ServicePack = objItem.CSDVersion
 		strOperatingSystem_LanguageCode = Clng(objItem.OSLanguage)
 		strOperatingSystem_LanguageCode = Hex(strOperatingSystem_LanguageCode)
-		nOperatingSystemLevel = objItem.Version
+		strOperatingSystemLevelFull = objItem.Version
 		strOperatingSystem_WindowsDirectory = objItem.WindowsDirectory
 	Next
-	nOperatingSystemLevel = Mid(nOperatingSystemLevel,1,1) & Mid(nOperatingSystemLevel,3,1) ' 50 for Win2k 51 for XP
-	
+	Dim arrSplitOSLevel 
+	arrSplitOSLevel = Split(strOperatingSystemLevelFull, ".")
+	strOperatingSystemLevel = arrSplitOSLevel(0) & arrSplitOSLevel(1) ' 50 for Win2k 51 for XP
+	strOperatingSystemLevelDisp = arrSplitOSLevel(0) & "." & arrSplitOSLevel(1) '10.0 for Windows 10, 6.3 for Windows 8.1...
+	objRegExp.IgnoreCase = False
+	objRegExp.Pattern = "Server"
+	If (objRegExp.Test(strOperatingSystem_Caption)) Then
+		bIsServer = True
+	End If
+
+	' Fix windows 10 naming
+	If (arrSplitOSLevel(0) = "10") Then
+		If (strOperatingSystem_Build = "10586") Then
+			strOperatingSystem_Caption = arrOperatingSystem_Name(0) & " Build 1511"
+		End If
+	End If
+
+	If (bWMIServerFeatures And bIsServer And strOperatingSystemLevel > 52) Then
+		ReportProgress " Gathering Server Features"
+		Set colItems = objWMIService.ExecQuery("Select * from Win32_ServerFeature",,48)
+		Set objDbrServerFeatures = CreateObject("ADOR.RecordSet")
+		objDbrServerFeatures.Fields.Append "ID", adVarChar, MaxCharacters
+		objDbrServerFeatures.Fields.Append "Name", adVarChar, MaxCharacters
+		objDbrServerFeatures.Fields.Append "ParentID", adVarChar, MaxCharacters
+		objDbrServerFeatures.Open
+		For Each objItem in colItems
+			'Append to array
+			objDbrServerFeatures.AddNew
+			objDbrServerFeatures("ID") = objItem.ID
+			objDbrServerFeatures("Name") = objItem.Name
+			objDbrServerFeatures("ParentID") = objItem.ParentID
+			objDbrServerFeatures.Update
+		Next
+		objDbrServerFeatures.Sort = "ParentID"
+	End If	
 	
 	If (bWMIBios) Then
 		ReportProgress " Gathering BIOS information"
@@ -872,7 +910,7 @@ Function GatherWMIInformation()
 		Loop
 	End If
 
-	If (bWMIIP4Routes And nOperatingSystemLevel > 50) Then
+	If (bWMIIP4Routes And strOperatingSystemLevel > 50) Then
 		ReportProgress " Gathering IP Route information"
 		Set colItems = objWMIService.ExecQuery("Select Destination, Mask, NextHop from Win32_IP4RouteTable",,48)
 		Set objDbrIP4RouteTable = CreateObject("ADOR.Recordset")
@@ -1284,7 +1322,7 @@ Function GatherWMIInformation()
 		For Each objItem in colItems
 			objDbrPatches.AddNew
 			objDbrPatches("Description") = objItem.Description
-			objDbrPatches("HotfixID") = objItem.HotfixID
+			objDbrPatches("HotfixID") = GetKBNumber(objItem.HotfixID)
 			If (IsNull(objItem.InstalledOn) Or objItem.InstalledOn = "") Then
 				objDbrPatches("InstallDate") = "N/A"
 			Else
@@ -1344,6 +1382,7 @@ Sub GetOptions()
 	' Default settings
 	bWMIBios = True
 	bWMIRegistry = True
+	bWMIServerFeatures = True
 	bWMIApplications = True
 	bWMIPatches = True
 	bWMIEventLogFile = True
@@ -1923,6 +1962,36 @@ Sub PopulateWordfile()
 			End If
 			objDbrWindowsComponents.MoveNext
 		Loop
+	End If
+
+	If (bWMIServerFeatures And bIsServer) Then
+		'Server Features
+		oWord.Selection.Font.Bold = True
+		oWord.Selection.TypeText "Server Features" & vbCrLf
+		oWord.Selection.Font.Bold = False
+		oWord.ActiveDocument.Tables.Add oWord.Selection.Range, objDbrServerFeatures.Recordcount + 1, 3
+		If Not (bUseSpecificTable) Then
+			oWord.Selection.Font.Bold = True
+		End If
+		oWord.Selection.TypeText "ParentID" : oWord.Selection.MoveRight
+		If Not (bUseSpecificTable) Then
+			oWord.Selection.Font.Bold = True
+		End If
+		oWord.Selection.TypeText "ID" : oWord.Selection.MoveRight
+		If Not (bUseSpecificTable) Then
+			oWord.Selection.Font.Bold = True
+		End If
+		oWord.Selection.TypeText "Name" : oWord.Selection.MoveRight
+		If Not (objDbrServerFeatures.Bof) Then
+			objDbrServerFeatures.MoveFirst
+		End If
+		Do Until objDbrServerFeatures.EOF
+			oWord.Selection.TypeText Cstr(objDbrServerFeatures.Fields.Item("ParentID")) : oWord.Selection.MoveRight
+			oWord.Selection.TypeText Cstr(objDbrServerFeatures.Fields.Item("ID")) : oWord.Selection.MoveRight
+			oWord.Selection.TypeText Cstr(objDbrServerFeatures.Fields.Item("Name")) : oWord.Selection.MoveRight
+			objDbrServerFeatures.MoveNext
+		Loop
+		oWord.Selection.TypeText VbCrLf
 	End If
 
 	If (bWMIPatches) Then
@@ -2556,7 +2625,7 @@ Sub PopulateXMLFile()
 	' computer
 	objXMLFile.WriteLine " <system name=""" & strComputerSystem_Name & """ />" 
 	' operatingsystem
-	objXMLFile.WriteLine " <operatingsystem name=""" & Scrub4XML(strOperatingSystem_Caption) & """ servicepack=""" & strOperatingSystem_ServicePack & """ />" 
+	objXMLFile.WriteLine " <operatingsystem name=""" & Scrub4XML(strOperatingSystem_Caption) & """ servicepack=""" & strOperatingSystem_ServicePack & """ osapi=""" & strOperatingSystemLevelDisp & """ build=""" & strOperatingSystem_Build & """ />"
 	If (bRegDomainSuffix) Then
 		' fqdn
 		objXMLFile.WriteLine " <fqdn name=""" &  LCase(strComputerSystem_Name) & "." & strPrimaryDomain & """ />" 
@@ -2701,6 +2770,23 @@ Sub PopulateXMLFile()
 			objDbrWindowsComponents.MoveNext
 		Loop
 		objXMLFile.WriteLine " </windowscomponents>"
+	End If
+
+	' Server Features
+	If (bWMIServerFeatures) Then
+		objXMLFile.WriteLine " <server_features>"
+		If (bIsServer) Then
+			If Not (objDbrServerFeatures.Bof) Then
+				objDbrServerFeatures.MoveFirst
+			End If
+			Do Until objDbrServerFeatures.EOF
+				objXMLFile.WriteLine "  <feature parentid=""" & Scrub4XML(objDbrServerFeatures.Fields.Item("ParentID")) & _
+					""" id=""" & Scrub4XML(objDbrServerFeatures.Fields.Item("ID")) & _
+					""" name=""" & Scrub4XML(objDbrServerFeatures.Fields.Item("Name")) & """ />"
+				objDbrServerFeatures.MoveNext
+			Loop
+		End IF
+		objXMLFile.WriteLine " </server_features>"
 	End If
 
 	' Patches
@@ -4319,6 +4405,7 @@ Sub SetOptions(strOption)
 					bAllowErrors = False
 			Case "-w"
 				bWMIBios = False
+				bWMIServerFeatures = False
 				bWMIRegistry = False
 				bWMIApplications = False
 				bWMIPatches = False
@@ -4338,6 +4425,8 @@ Sub SetOptions(strOption)
 						Select Case strParameter
 							Case "b"
 								bWMIBios = True
+							Case "c"
+								bWMIServerFeatures = True
 							Case "r"
 								bWMIRegistry = True
 							Case "a"

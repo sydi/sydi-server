@@ -3,6 +3,10 @@ Version 2.5
 	- Force use of cscript, if wscript is calling shell, rerun via cscript
 	- Added GetKBNumber(), GetRegHFID(), and GetRegUpdateType() functions
 	  for use by GatherRegInformation() update processing.
+	- Extended OS Identifcation to include Windows 10 build number
+	- Send build number only to xml output (for parser)
+	- Added server OS detection and installed server features processing
+
 Version 2.4
 	- Fixed bug for drive names in while generating XML files
 	- Fixed character bug in SYDI-Server which impacted SYDI-Overview
