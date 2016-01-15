@@ -521,8 +521,9 @@ Function GatherRegInformation()
 	Dim arrRegValueNames, arrRegValueTypes
 	Dim dwValue
 	Dim objRegLocator, objRegService
-	Dim arrRegPrograms, strRegProgram, strRegProgramsDisplayName, strRegProgramsDisplayVersion, strRegProgramsTmp
-	Dim bRegProgramsSkip
+	Dim arrRegPrograms, strRegProgram, strRegProgramsDisplayName, strRegProgramsDisplayVersion, strRegProgramsTmp, strRegProgramNameTmp
+	Dim strRegProgramsPatchDesc, strRegProgramsInstallDate, strRegProgramsPatchType, strRegProgramsPatchID
+	Dim bRegProgramsSkip, bRegProgramsPatch
 	Dim objRegExp
 	Dim dictProductKeyKeys, dictProductKeyItems, strCurrentProductKeyName
 	Dim strProductKeyGUID, arrProductKeyGUID, arrDigitalProductID, iProductKey
@@ -572,36 +573,56 @@ Function GatherRegInformation()
 		oReg.EnumKey HKEY_LOCAL_MACHINE,"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",arrRegPrograms
 		For Each strRegProgram In arrRegPrograms
 			bRegProgramsSkip = False
+			bRegProgarmsPatch = False
 			oReg.GetStringValue HKEY_LOCAL_MACHINE, "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" & strRegProgram, "DisplayName", strRegProgramsDisplayName
 			
 			' Remove programs without Display Name
-			If (IsNull(strRegProgramsDisplayName)) Then : bRegProgramsSkip = True : End If 
+			If (IsNull(strRegProgramsDisplayName)) Then
+				bRegProgramsSkip = True
+				bRegProgarmsPatch = False
+			End If 
 	
 			' Remove MSI applications
 			If (Len(strRegProgram) = 38) Then 
 				strRegProgramsTmp = Left(strRegProgram,1) & Right(strRegProgram,1)
-				If (strRegProgramsTmp = "{}") Then : bRegProgramsSkip = True : End If
+				If (strRegProgramsTmp = "{}") Then
+					bRegProgramsSkip = True
+					bRegProgramsPatch = False
+				End If
 			End If
 			
 			' Remove Patches
-			objRegExp.IgnoreCase = True
+			objRegExp.IgnoreCase = False
 			objRegExp.Pattern = "KB\d{6}"
-			strRegProgramsTmp = objRegExp.Test(strRegProgram)
-			If (strRegProgramsTmp) Then : bRegProgramsSkip = True : End If
-			objRegExp.Pattern = "Q\d{6}"
-			strRegProgramsTmp = objRegExp.Test(strRegProgram)
-			If (strRegProgramsTmp) Then : bRegProgramsSkip = True : End If
-
+			strRegProgramNameTmp = objRegExp.Test(strRegProgramsDisplayName)
+			If (strRegProgramNameTmp) Then 
+				bRegProgramsSkip = True
+				bRegProgramsPatch = True
+			End If
 			
 			If Not (bRegProgramsSkip) Then
 				objDbrRegPrograms.AddNew
 				objDbrRegPrograms("DisplayName") = strRegProgramsDisplayName
-				
 				oReg.GetStringValue HKEY_LOCAL_MACHINE, "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" & strRegProgram, "DisplayVersion", strRegProgramsDisplayVersion
 				objDbrRegPrograms("DisplayVersion") = Scrub(strRegProgramsDisplayVersion)
-				
-				
 				objDbrRegPrograms.Update
+			End If
+			If (bRegProgramsPatch) Then
+				If (bWMIPatches) Then
+					If Len(Trim(strRegProgramsDisplayName)) Then
+						objDbrPatches.Open
+						objDbrPatches.AddNew
+						strRegProgramsPatchDesc = ""
+						strRegProgramsPatchID = ""
+						strRegProgramsInstallDate = ""
+						oReg.GetStringValue HKEY_LOCAL_MACHINE, "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" & strRegProgram, "DisplayName", strRegProgramsPatchID
+						oReg.GetStringValue HKEY_LOCAL_MACHINE, "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" & strRegProgram, "ReleaseType", strRegProgramsPatchDesc
+						objDbrPatches("Description") = GetRegUpdateType(strRegProgramsDisplayName)
+						objDbrPatches("HotfixID") = GetKBNumber(GetRegHFID(strRegProgramsDisplayName))
+						objDbrPatches("InstallDate") = "N/A"
+						objDbrPatches.Update
+					End If
+				End If
 			End If
 		Next
 		objDbrRegPrograms.Sort = "DisplayName"

@@ -6,6 +6,8 @@ Version 2.5
 	- Extended OS Identifcation to include Windows 10 build number
 	- Send build number only to xml output (for parser)
 	- Added server OS detection and installed server features processing
+	- Add patch found in registry scan to patches array
+	- Remove obsolete "Q" patch detection
 
 Version 2.4
 	- Fixed bug for drive names in while generating XML files
