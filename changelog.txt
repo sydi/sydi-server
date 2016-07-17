@@ -1,5 +1,6 @@
 Version 2.5
 	- Added Greek language file for ss-xml2word.vbs (by Manos Petridis)
+	- Added Spanish language file for ss-xml2word.vbs (by Carlos de Blas Cartón)
 	- Force use of cscript, if wscript is calling shell, rerun via cscript
 	- Added GetKBNumber(), GetRegHFID(), and GetRegUpdateType() functions
 	  for use by GatherRegInformation() update processing.
