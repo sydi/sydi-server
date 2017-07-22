@@ -1,6 +1,15 @@
 Version 2.5
 	- Added Greek language file for ss-xml2word.vbs (by Manos Petridis)
 	- Added Spanish language file for ss-xml2word.vbs (by Carlos de Blas Cartón)
+	- Force use of cscript, if wscript is calling shell, rerun via cscript
+	- Added GetKBNumber(), GetRegHFID(), and GetRegUpdateType() functions
+	  for use by GatherRegInformation() update processing.
+	- Extended OS Identifcation to include Windows 10 build number
+	- Send build number only to xml output (for parser)
+	- Added server OS detection and installed server features processing
+	- Add patch found in registry scan to patches array
+	- Remove obsolete "Q" patch detection
+	- Support x86_64 versions of Windows (registry sofware discovery)
 
 Version 2.4
 	- Fixed bug for drive names in while generating XML files

@@ -283,6 +283,25 @@ The system has <xsl:value-of select = "computer/processor/@count" /> processor(s
 </xsl:for-each>
 </xsl:if>
 
+<xsl:if test="computer/server_features/feature">
+<br />
+<strong>Server Features</strong><br />
+<table>
+	<tr>
+		<th>Parent ID</th>
+		<th>ID</th>
+		<th>Name</th>
+	</tr>
+	<xsl:for-each select ="/computer/server_features/feature" >
+		<tr>
+			<td><xsl:value-of select = "@parentid"/></td>
+			<td><xsl:value-of select = "@id"/></td>
+			<td><xsl:value-of select = "@name"/></td>
+		</tr>
+	</xsl:for-each> 
+</table>
+</xsl:if>
+
 <xsl:if test="computer/patches/patch">
 <h2 id="softwareplatform_patches">Installed Patches</h2>
 <table>
