@@ -264,6 +264,7 @@ Dim strStylesheet, strXSLFreeText
 
 ' Constants
 Const adVarChar = 200
+Const adVarWChar = 202
 Const MaxCharacters = 255
 
 '==========================================================
@@ -1184,7 +1185,7 @@ Function GatherWMIInformation()
 		ReportProgress " Gathering application information"
 		Set colItems = objWMIService.ExecQuery("Select Name, Vendor, Version, InstallDate from Win32_Product WHERE Name <> Null",,48)
 		Set objDbrProducts = CreateObject("ADOR.Recordset")
-		objDbrProducts.Fields.Append "ProductName", adVarChar, MaxCharacters
+		objDbrProducts.Fields.Append "ProductName", adVarWChar, MaxCharacters
 		objDbrProducts.Fields.Append "Vendor", adVarChar, MaxCharacters
 		objDbrProducts.Fields.Append "Version", adVarChar, MaxCharacters
 		objDbrProducts.Fields.Append "InstallDate", adVarChar, MaxCharacters
