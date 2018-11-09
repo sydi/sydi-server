@@ -551,15 +551,9 @@ Sub PopulateExcelfile()
 	objExcel.Workbooks.Add
 	' Remove all sheets except one
 	sheetCount = objExcel.Sheets.Count
-	
 	Do while sheetCount > 1
-		'Wscript.Echo "before deleting i is:", i
-		
 		objExcel.Sheets(sheetCount).Delete
 		sheetCount = sheetCount - 1
-		'Wscript.Echo "i is now", i
-		'Wscript.Echo i
-		
 	Loop
 	objExcel.Cells(1, 1).Value = "Name"
 	objExcel.Cells(1, 2).Value = "Os"
