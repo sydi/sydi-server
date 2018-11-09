@@ -54,6 +54,7 @@ strScriptVersion = "0.3"
 Dim strXMLDirectory
 Dim bInvalidArgument, bDisplayHelp
 Dim intXMLFileCount, intXMLTotalFiles
+Dim sheetCount
 
 ' Database Records
 Dim objDbrXMLFiles, objDbrComputers, objDbrComputerServices, objDbrOSDistribution, objDbrRegistryPrograms, objDbrWMIPrograms
@@ -69,6 +70,8 @@ Const adNumeric = 131
 Const adVarChar = 200
 Const MaxCharacters = 255
 
+' Counters
+Dim i
 '==========================================================
 '==========================================================
 ' Main Body
@@ -546,6 +549,18 @@ Sub PopulateExcelfile()
 	Set objExcel = CreateObject("Excel.Application")
 	objExcel.Visible = True
 	objExcel.Workbooks.Add
+	' Remove all sheets except one
+	sheetCount = objExcel.Sheets.Count
+	
+	Do while sheetCount > 1
+		'Wscript.Echo "before deleting i is:", i
+		
+		objExcel.Sheets(sheetCount).Delete
+		sheetCount = sheetCount - 1
+		'Wscript.Echo "i is now", i
+		'Wscript.Echo i
+		
+	Loop
 	objExcel.Cells(1, 1).Value = "Name"
 	objExcel.Cells(1, 2).Value = "Os"
 	objExcel.Cells(1, 3).Value = "Service Pack"
@@ -593,7 +608,9 @@ Sub PopulateExcelfile()
     objExcel.ActiveWindow.FreezePanes = True
 	objExcel.Range("A1").Select
 	objExcel.Sheets(1).Name = "Computers"
+	objExcel.Sheets.Add ,objExcel.Sheets(1) ' Add a new sheet after the last one
 	objExcel.Sheets(2).Name = "WMI Programs"
+	objExcel.Sheets.Add ,objExcel.Sheets(2) ' Add a new sheet after the last one
 	objExcel.Sheets(3).Name = "Registry Programs"
 	objExcel.Sheets.Add ,objExcel.Sheets(3) ' Add a new sheet after the last one
 	objExcel.Sheets(4).Name = "Processes"
